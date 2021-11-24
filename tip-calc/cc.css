@@ -1,0 +1,257 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Mono', monospace;
+}
+
+/* this contains the whole page */
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: hsl(185, 41%, 84%);
+    min-height: 100vh;
+    position: relative;
+}
+
+/* This one is the main with the background which contains all other fields except logo */
+.calc{
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 1em;
+    margin: 1em;
+    padding: 2em;
+    max-width: 1040px;
+}
+
+/* this one is for the logo "SPLITTER" */
+header{
+    display: flex;
+    justify-content: center;
+}
+
+/* Mostly I have used h4 and h5 for every major field like ,Bill, Select tip etc.etc. */
+h4, h5{
+    color: hsl(184, 14%, 56%);
+}
+
+/* I added this bcz the display was looking a little enlarged */
+label{
+    display: flex;
+    justify-content: space-between;
+}
+
+.error-mssg{
+    color: red;
+    font-weight: 700;
+}
+
+/* initially set the visibility to hidden */
+.amt-error,
+.people-error{
+    visibility: hidden;
+}
+
+
+/* here I have set the background repeat to none otherwise the image was all over the field */
+.amount{
+    background-image: url('images/icon-dollar.svg');
+    background-repeat: no-repeat;
+}
+
+.people{
+    background-image: url('images/icon-person.svg');
+    background-repeat: no-repeat;
+}
+
+/* For the both of these below I added a margin just for the space it looked okay before also */
+.input h4{
+    margin-bottom: 1em;
+}
+
+.amount, .tips{
+    margin-bottom: 1.5rem;
+}
+
+/* When i click on the input fields the border changes the color with this one */
+.amount:focus,
+.people:focus,
+.custom:focus{
+    outline: 2px solid hsl(172, 67%, 45%);
+}
+
+/* if incase the input fields give error */
+.error,
+.error:focus{
+    outline: 2px solid red;
+    color: red;
+    background-color: rgba(255, 0, 0, 0.2);
+}
+
+/* for the input, outline and border is set to none bcz without them if i select the input field it mixes with 
+the color I added above */
+input{
+    width: 100%;
+    height: 50px;
+    background: hsl(189, 41%, 97%);
+    background-position: 1em center ;
+    background-size: 1em;
+    color: hsl(172, 67%, 45%);
+    font-size: 24px;
+    font-weight: 700;
+    text-align: right;
+    outline: none;
+    border: none;
+    border-radius: 1vh;
+    -webkit-appearance: none; 
+    -moz-appearance: textfield;
+    padding: 0 1em;
+}
+
+/* This is the one I spoke about, to remove those tiny buttons which on click increment/decrement input values */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* I added the grid display to the tips section */
+.tips{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5em;
+}
+
+/* This is for each individual button under the tips section
+New thing I tried with this one is to add the transition */
+.tip{
+    font-size: 1.5em;
+    font-weight: 700;
+    background: hsl(183, 100%, 15%);
+    color:hsl(0, 0%, 100%);
+    border-radius: 1vh;
+    transition: all 300ms ease-in-out;
+    cursor: pointer;    
+}
+
+/* when  you simply hover over the button it changes it's tect and background color */
+.unselected:hover{
+    background: hsl(172, 67%, 75%);
+    color: hsl(183, 100%, 15%);
+}
+
+/* When i select any button with 5,10,15 etc. you can notice just a small change in it */
+.tip:active{
+    transform: scale(0.9);
+}
+
+/* for the both fields on the riht side of input, under the results part */
+.tip-amount, .total{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* for when the button is selected */
+.selected{
+    background-color:hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+}
+
+.text h4{
+    color:hsl(0, 0%, 100%);
+}
+
+.text h4, h5{
+    font-weight: 400;
+}
+
+.value{
+    color:hsl(172, 67%, 45%);
+    font-size: 2em;
+    font-weight: 700;
+}
+
+.custom{
+    letter-spacing: -2px;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: hsl(183, 100%, 15%);
+    text-align: center;
+}
+/* this one is the right part the dark green box which has the reset button */
+.result{
+    padding: 2em;
+    background: hsl(183, 100%, 15%);
+    border-radius: 1em;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+/* reset button */
+.reset{
+    width: 100%;
+    height: 50px;
+    font-size: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    background-color:hsl(172, 67%, 45%);
+    color: hsl(183, 100%, 15%);
+    border-radius: 1vh;
+    margin-top: auto;
+    transition: background 300ms ease-in-out,
+                transform 200ms ease-in-out;
+    cursor: pointer;    
+}
+.reset:hover{
+    background: hsl(172, 67%, 75%);
+}
+.reset:active{
+    transform: scale(0.95);
+}
+
+/* both media's are for when I inspect and shrink or expand till or after 990px and then it changes*/
+@media(max-width: 990px){
+    header{
+        margin-top: 2em;
+    }
+    header img{
+        transform: scale(1.2);
+    }
+}
+
+@media(min-width: 990px){
+    header{
+        margin: 0;
+    }
+    .calc{
+        display: flex;
+        gap: 1em;
+        width: 100%;
+    }
+    .calc > *{
+        width: 100%;
+    }
+    .tips{
+        grid-template-rows: repeat(2, 1fr);
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+.attribution{ 
+    position: absolute;
+    font-size: 11px; 
+    text-align: center; 
+    /* left: 0; */
+    bottom: -1em;
+}
+.attribution a{ 
+    color: hsl(228, 45%, 44%); 
+}
